@@ -14,6 +14,5 @@ const HeaderComponent = ({ classes }) => (
   </header>
 )
 
-const StyledHeader = injectSheet(HeaderStyles)(HeaderComponent)
-
+const StyledHeader = injectSheet(HeaderStyles)(HeaderComponent);
 export default StyledHeader;

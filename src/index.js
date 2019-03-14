@@ -1,19 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ThemeProvider } from 'react-jss';
+import { ThemeProvider as Themes } from 'react-jss';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import App from './components/App';
+import AppRoutes from './routes';
 import * as serviceWorker from './serviceWorker';
 
 import './index.css';
-
-import LightTheme from './shared/themes/LightTheme';
+import LightTheme from './shared/themes/Light.theme';
 
 const root = document.getElementById('root');
 const ServedApp = () => (
-  <ThemeProvider theme={LightTheme}>
-    <App />
-  </ThemeProvider>
+  <Router>
+    <Themes theme={LightTheme}>
+      <AppRoutes />
+    </Themes>
+  </Router>
 );
 
 ReactDOM.render(<ServedApp />, root);
