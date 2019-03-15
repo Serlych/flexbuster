@@ -1,7 +1,10 @@
 import React from 'react';
 import { element } from 'prop-types';
+// import injectSheet from 'react-jss';
 
-const Content = props => {
+// import ContentStyles from './Content.styles';
+
+const ContentComponent = props => {
   const { children } = props
   return (
     <main>
@@ -10,8 +13,10 @@ const Content = props => {
   )
 }
 
-Content.propTypes = {
+ContentComponent.propTypes = {
   children: element
 }
 
-export default Content;
+// const StyledContent = injectSheet()
+// export default StyledContent;
+export default ContentComponent;

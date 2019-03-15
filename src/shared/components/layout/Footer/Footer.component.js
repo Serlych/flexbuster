@@ -1,10 +1,23 @@
 import React from 'react';
+import { element } from 'prop-types';
 import injectSheet from 'react-jss';
 
-const FooterComponent = ({ classes }) => (
-  <footer>
-    <div>&copy; Flexbuster {(new Date()).getFullYear()}</div>
-  </footer>
-)
+import FooterStyles from './Footer.styles';
 
-export default FooterComponent;
+const FooterComponent = props => {
+  
+  const { classes } = props
+  
+  return (
+    <footer className={classes.footerContainer}>
+      <div>&copy; Flexbuster {(new Date()).getFullYear()}</div>
+    </footer>
+  )
+}
+
+FooterComponent.propTypes = {
+  children: element
+}
+
+const StyledFooter = injectSheet(FooterStyles)(FooterComponent);
+export default StyledFooter;
