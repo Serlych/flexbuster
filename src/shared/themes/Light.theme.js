@@ -1,13 +1,13 @@
-const hue = 213;
+const hue = 170;
 const successHue = 125;
-const warningHue = 44;
+const warningHue = 45;
 
-const saturation = 60;
-const lightness = 90;
+const saturation = 40;
+const lightness = 55;
 
-const hueOffset = 34;
-const saturationOffset = 15;
-const lightnessOffset = 80;
+const hueOffset = 60;
+const saturationOffset = 10;
+const lightnessOffset = 10;
 
 const dentsGradColor = 'rgba(252,252,252,1)';
 const dentsSize = '32px';
@@ -15,7 +15,7 @@ const dentsSize = '32px';
 const shadowXPosition = '3px';
 const shadowYPosition = 2;
 const shadowBlur = '6px';
-const shadowOpacity = 0.3;
+const shadowOpacity = 0.4;
 
 const fontAccent = 'Sniglet, cursive'
 const fontSize = 1;
@@ -30,8 +30,8 @@ const LightTheme = {
     accent: `hsl(${hue - hueOffset}, ${saturation + saturationOffset}%, ${lightness - lightnessOffset}%)`
   },
   grayColor: {
-    main: `hsl(${hue}, ${Math.ceil(saturation / 3)}%, ${Math.ceil(lightness / 1.15)}%)`,
-    accent: `hsl(${hue}, ${Math.ceil(saturation / 3)}%, ${Math.ceil(lightness / 1.3)}%)`
+    main: `hsl(${hue}, ${Math.ceil(saturation / 2)}%, ${Math.ceil(lightness / 0.9)}%)`,
+    accent: `hsl(${hue}, ${Math.ceil(saturation / 3)}%, ${Math.ceil(lightness / 1.2)}%)`
   },
   supportColor: {
     success: `hsl(${successHue}, ${saturation}%, ${lightness})`,
@@ -61,13 +61,14 @@ const LightTheme = {
       fontSize: `${fontSize + 0.5}em`,
       textAlign: 'center'
     },
-    logo: {
+    header: {
       fontSize: `${fontSize + 1.3}em`,
+      color: 'white',
       fontWeight: 500
     },
     footer: {
       fontSize: `${fontSize + 0.3}em`,
-      color: `hsl(${hue}, 10%, ${(lightness / 0.92).toFixed(0)}%)`,
+      color: `hsl(${hue}, 10%, ${(lightness / 0.10).toFixed(0)}%)`,
       fontWeight: 500
     }
   },

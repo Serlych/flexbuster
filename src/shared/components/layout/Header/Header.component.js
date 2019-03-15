@@ -6,12 +6,12 @@ import HeaderStyles from './Header.styles';
 
 const HeaderComponent = ({ classes }) => (
   <header className={classes.headerContainer}>
-    <div className={classes.headerLogo}>
-      <i className='fas fa-otter' />
+    <div className={classes.headerLogoContainer}>
+      <i className={`fas fa-otter ${classes.headerLogoIcon}`} />
       Flexbuster
     </div>
     <div className={classes.headerButtons}>
-      <i className='fas fa-user fa-2x'/>
+      <i className='fas fa-user'/>
     </div>
   </header>
 )

@@ -2,7 +2,7 @@ const Error404Styles = theme => ({
   errorWrapper: {
     ...theme.flexCenter,
     ...theme.sharkBorder,
-    backgroundColor: theme.secondaryColor.main,
+    backgroundColor: theme.primaryColor.main,
     margin: theme.margin.container,
     padding: theme.padding.container
   },
@@ -12,6 +12,10 @@ const Error404Styles = theme => ({
   errorName: {
     ...theme.font.title,
     margin: '2% 0'
+  },
+  errorEmphasis: {
+    fontWeight: 600,
+    fontSize: '1.5em'
   },
   errorBody: {
     ...theme.font.subtitle,
