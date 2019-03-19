@@ -10,7 +10,7 @@ const Error404Component = props => {
   
   return (
     <div className={classes.errorWrapper}>
-      <Ghost className={classes.errorImage} size={240} mood="dead" color="#fff"/>
+      <Ghost className={classes.errorImage} size={240} mood="ko" color="#fff"/>
       <div className={classes.errorName}>
         Err<span className={classes.errorEmphasis}>owo</span>r
       </div>

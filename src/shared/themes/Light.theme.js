@@ -9,16 +9,21 @@ const hueOffset = 60;
 const saturationOffset = 10;
 const lightnessOffset = 10;
 
-const dentsGradColor = 'rgba(252,252,252,1)';
-const dentsSize = '32px';
-
-const shadowXPosition = '3px';
+const shadowXPosition = 3;
 const shadowYPosition = 2;
-const shadowBlur = '6px';
+const shadowBlur = 6;
 const shadowOpacity = 0.4;
 
-const fontAccent = 'Sniglet, cursive'
+const fontAccent = 'Sniglet, cursive';
 const fontSize = 1;
+
+const animationToX = 0;
+const animationToY = -5;
+const animationDuration = 0.15;
+const animationBezier = 'cubic-bezier(0.80, 0.10, 0.80, 0.80)';
+
+const dentsGradColor = 'rgba(252,252,252,1)';
+const dentsSize = '32px';
 
 const LightTheme = {
   primaryColor: {
@@ -47,9 +52,9 @@ const LightTheme = {
     container: '2rem 10rem'
   },
   shadow: {
-    image: `drop-shadow(${shadowXPosition} ${shadowYPosition}px ${shadowBlur} rgba(0, 0, 0, ${shadowOpacity}))`,
-    header: `0 ${shadowYPosition + 3}px ${shadowBlur} 0px rgba(0, 0, 0, ${(shadowOpacity - 0.1).toFixed(2)})`,
-    container: `${shadowXPosition} ${shadowYPosition} ${shadowBlur} 0px rgba(0, 0, 0, ${shadowOpacity})`
+    image: `drop-shadow(${shadowXPosition}px ${shadowYPosition}px ${shadowBlur}px rgba(0, 0, 0, ${shadowOpacity}))`,
+    header: `0 ${shadowYPosition + 3}px ${shadowBlur}px 0px rgba(0, 0, 0, ${(shadowOpacity - 0.1).toFixed(2)})`,
+    container: `${shadowXPosition}px ${shadowYPosition}px ${shadowBlur}px 0px rgba(0, 0, 0, ${shadowOpacity})`
   },
   font: {
     title: {
@@ -70,6 +75,13 @@ const LightTheme = {
       fontSize: `${fontSize + 0.3}em`,
       color: `hsl(${hue}, 10%, ${(lightness / 0.10).toFixed(0)}%)`,
       fontWeight: 500
+    }
+  },
+  animation: {
+    transition: `all ${animationDuration}s ${animationBezier}`,
+    hover: {
+      transform: `translate(${animationToX}px, ${animationToY}px)`,
+      filter: `drop-shadow(${shadowXPosition}px ${shadowYPosition}px ${shadowBlur}px rgba(0, 0, 0, ${shadowOpacity}))`,
     }
   },
   flexCenter: {

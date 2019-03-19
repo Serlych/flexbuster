@@ -40,6 +40,8 @@ class PostsComponent extends Component {
   );
   
   render() {
+    console.log(this.props)
+  
     const { notes } = this.state;
     const { match: { params: { postId }}} = this.props
     

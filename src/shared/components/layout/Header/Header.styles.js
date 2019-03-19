@@ -17,7 +17,15 @@ const HeaderStyles = theme => ({
     marginRight: '0.5em'
   },
   headerButtons: {
-    height: '100%'
+    height: '100%',
+    '& i': {
+      transition: theme.animation.transition,
+      '&:hover': {
+        transition: theme.animation.transition,
+        ...theme.animation.hover,
+        cursor: 'pointer'
+      }
+    }
   }
 })
 

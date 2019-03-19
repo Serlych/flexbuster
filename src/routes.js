@@ -14,6 +14,8 @@ const AppRoutes = () => (
       {/*Posts*/}
       <Route exact path='/posts' component={Posts} />
       <Route exact path='/posts/:postId' component={Posts} />
+      
+      {/*Fallback*/}
       <Route component={Error404} />
     </Switch>
   </App>
