@@ -1,3 +1,15 @@
+import HSLtoRGB from '../utils/hslToRgb.util';
+
+const calculateMainColor = (h, s, l) => {
+  
+  return `hsl(${h}, ${s}%, ${l}%)`
+}
+
+const calculateAccentColor = (h, s, l) => {
+
+
+}
+
 const hue = 170;
 const successHue = 125;
 const warningHue = 45;
@@ -27,7 +39,7 @@ const dentsSize = '32px';
 
 const LightTheme = {
   primaryColor: {
-    main: `hsl(${hue}, ${saturation}%, ${lightness}%)`,
+    main: calculateMainColor(hue, saturation, lightness),
     accent: `hsl(${hue}, ${saturation + saturationOffset}%, ${lightness - lightnessOffset}%)`
   },
   secondaryColor: {

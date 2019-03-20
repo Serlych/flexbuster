@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import device from './reducers/deviceReducer';
+import deviceReducer from './reducers/device.reducer';
 
 const rootReducer = combineReducers({
-  device
+  device: deviceReducer
 })
 
 export default rootReducer;

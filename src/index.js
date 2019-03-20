@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
 //Styles
-import { ThemeProvider as Themer } from 'react-jss';
+import { ThemeProvider as Theme } from 'react-jss';
 import LightTheme from './shared/themes/Light.theme';
 import './index.css';
 
@@ -15,16 +15,16 @@ import AppRoutes from './routes';
 
 //Redux
 import { Provider as Redux } from 'react-redux';
-import configureStore from './redux/configureStore';
+import configureStore from './redux/configure.store';
 const store = configureStore(window.initialState);
 
 const root = document.getElementById('root');
 const ServedApp = () => (
   <Redux store={store}>
     <Router>
-      <Themer theme={LightTheme}>
+      <Theme theme={LightTheme}>
         <AppRoutes />
-      </Themer>
+      </Theme>
     </Router>
   </Redux>
 );
