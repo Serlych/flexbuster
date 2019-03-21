@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
-import deviceReducer from './reducers/device.reducer';
+import devicesReducer from './reducers/device.reducer';
+import postsReducer from './reducers/posts.reducer';
 
 const rootReducer = combineReducers({
-  device: deviceReducer
+  devices: devicesReducer,
+  posts: postsReducer
 })
 
 export default rootReducer;

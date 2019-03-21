@@ -2,7 +2,7 @@ const Error404Styles = theme => ({
   errorWrapper: {
     ...theme.flexCenter,
     ...theme.sharkBorder,
-    backgroundColor: theme.primaryColor.main,
+    backgroundColor: theme.primaryColor.principal,
     margin: theme.margin.container,
     padding: theme.padding.container
   },

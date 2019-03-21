@@ -1,5 +1,6 @@
 const HeaderStyles = theme => ({
   headerContainer: {
+    color: theme.primaryColor.font,
     ...theme.font.header,
     userSelect: 'none',
     display: 'flex',
@@ -9,20 +10,30 @@ const HeaderStyles = theme => ({
     backgroundColor: theme.primaryColor.accent,
     boxShadow: theme.shadow.header
   },
+  ...theme.animation.hoverLogo.keyframes,
   headerLogoContainer: {
     cursor: 'pointer',
-    height: '100%'
+    height: '100%',
+    '&:hover': {
+      '& i': {
+        animation: theme.animation.hoverLogo.animation
+      }
+    }
   },
   headerLogoIcon: {
     marginRight: '0.5em'
   },
+  headerCopyright: {
+    fontSize: '0.4em'
+  },
   headerButtons: {
     height: '100%',
     '& i': {
-      transition: theme.animation.transition,
+      margin: theme.margin.headerIcon,
+      transition: theme.animation.globalTransition,
       '&:hover': {
-        transition: theme.animation.transition,
-        ...theme.animation.hover,
+        transition: theme.animation.globalTransition,
+        ...theme.animation.hoverIcon,
         cursor: 'pointer'
       }
     }

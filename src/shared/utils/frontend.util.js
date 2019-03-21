@@ -1,7 +1,7 @@
-export function getNewState (state, newState) {
-  return Object.assign({}, state, newState)
+export const getNewState = (prevState, newState) => {
+  return Object.assign({}, prevState, newState)
 }
 
-export function isFirstRender (items) {
+export const isFirstRender = items => {
   return !items || items.length === 0 || Object.keys(items).length === 0
 }

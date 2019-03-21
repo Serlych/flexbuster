@@ -42,7 +42,7 @@ const HSLtoRGB = (hue, saturation, lightness) => {
   green = Math.round((green + match) * 255)
   blue = Math.round((blue + match) * 255)
   
-  return `rgb(${red},${green},${blue})`
+  return [red, green, blue]
 }
 
 export default HSLtoRGB;
