@@ -8,10 +8,13 @@ const PageTitleComponent = props => {
   
   const { classes, pageTitleText, pageTitlePath } = props
   
+  let path = pageTitlePath.split('/').join('/ ')
+  path = path.replace(path.charAt(2), path.charAt(2).toUpperCase())
+  
   return (
     <div className={classes.pageTitleContainer}>
       <span className={classes.pageTitle}>{pageTitleText}</span>
-      <span className={classes.pagePath}>Flexbuster {pageTitlePath.split('/').join('/ ')}</span>
+      <span className={classes.pagePath}>Flexbuster {path}</span>
     </div>
   )
 }

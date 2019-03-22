@@ -1,20 +1,20 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import injectSheet from 'react-jss';
-import { Ghost } from 'react-kawaii';
 
-import PageTitle from '../../presentational/PageTitle/PageTitle.component';
+import PageTitle from '../../PageTitle/PageTitle.component';
+import { Ghost } from 'react-kawaii';
 
 import Error404Styles from './404.styles';
 
 const Error404Component = props => {
   
-  const { classes } = props
+  const { classes, location } = props
   
   return (
     <Fragment>
-      <PageTitle pageTitleText='Woopsie!' pageTitlePath={props.location.pathname}/>
+      <PageTitle pageTitleText='Woopsie!' pageTitlePath={location.pathname}/>
       <div className={classes.errorWrapper}>
-        <Ghost className={classes.errorImage} size={240} mood="ko" color="#fff"/>
+        <Ghost size={240} mood="ko" color="#fff"/>
         <div className={classes.errorName}>
           Err<span className={classes.errorEmphasis}>owo</span>r
         </div>

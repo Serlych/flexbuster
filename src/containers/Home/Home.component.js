@@ -2,9 +2,9 @@ import React, { Fragment } from 'react';
 import injectSheet from 'react-jss';
 import { connect } from 'react-redux';
 
-import PageTitle from '../../presentational/PageTitle/PageTitle.component'
+import PageTitle from '../../components/PageTitle/PageTitle.component';
 
-import HomeStyles from './Home.styles'
+import HomeStyles from './Home.styles';
 
 const HomeComponent = props => {
   

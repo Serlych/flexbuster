@@ -6,6 +6,7 @@ import ContentStyles from './Content.styles';
 
 const ContentComponent = props => {
   const { classes, children } = props
+  
   return (
     <main className={classes.contentContainer}>
       {children}

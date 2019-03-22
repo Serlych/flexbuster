@@ -2,8 +2,8 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import App from './components/App';
-import Home from './components/containers/Home/Home.component';
-import Posts from './components/containers/Posts/Posts.component';
+import Home from './containers/Home/Home.component';
+import Posts from './containers/Posts/Posts.component';
 import Error404 from './components/errors/404/404.component';
 
 const AppRoutes = () => (

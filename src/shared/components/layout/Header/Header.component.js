@@ -9,12 +9,14 @@ const HeaderComponent = ({ classes }) => (
   <header className={classes.headerContainer}>
     <div className={classes.headerLogoContainer}>
       <Link to='/'>
-        <i className={`fas fa-otter ${classes.headerLogoIcon}`} />
+        <i className={`fas fa-cat ${classes.headerLogoIcon}`} />
         Flexbuster<span className={classes.headerCopyright}>&copy;</span>
       </Link>
     </div>
     <div className={classes.headerButtons}>
-      <i className='fas fa-file-alt' />
+      <Link to='/posts'>
+        <i className='fas fa-file-alt' />
+      </Link>
       <i className='fas fa-palette' />
       <i className='fas fa-user' />
     </div>

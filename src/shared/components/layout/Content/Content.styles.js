@@ -1,7 +1,6 @@
 const ContentStyles = theme => ({
   contentContainer: {
-    margin: theme.margin.main,
-    padding: theme.padding.main
+   ...theme.layout.content
   }
 })
 
