@@ -56,7 +56,7 @@ const dentsSize = '32px';
 
 //Automatic font color pick
 let overrideAutomaticFontColor = true;
-let overriddenFontColor = 'white'
+let overriddenFontColor = 'white';
 
 const calculateFontColor = (h, s, l) => {
   if (overrideAutomaticFontColor === false) {
@@ -144,6 +144,9 @@ const LightTheme = {
       margin: '2.5rem 0',
       boxShadow: `${shadowXPosition}px ${shadowYPosition}px ${shadowBlur}px 0px rgba(0, 0, 0, ${shadowOpacity - shadowOpacityOffset})`,
     },
+    textBlock: {
+      margin: '2rem 0'
+    },
     error: {
       display: 'flex',
       flexDirection: 'column',
@@ -172,10 +175,13 @@ const LightTheme = {
       width: '50%',
       padding: '0.5rem',
       border: `1px solid ${borderColor}`,
+      outline: 'none',
       margin: '0.5rem 0'
     },
     textArea: {
-      width: '97%'
+      width: '97%',
+      resize: 'none',
+      outline: 'none'
     },
     button: {
       fontSize: `${fontSize + 0.1}em`,

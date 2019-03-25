@@ -1,11 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import uuidv4 from 'uuid/v4';
 import injectSheet from 'react-jss';
-import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import PageTitle from '../../components/PageTitle/PageTitle.component';
+import TextareaAutosize from 'react-autosize-textarea';
 import SinglePost from '../../components/SinglePost/SinglePost.component';
+import { getDate } from '../../shared/utils/frontend.util';
 
 import { createEntry } from '../../redux/actions/posts.action';
 
@@ -32,19 +34,15 @@ class PostsComponent extends Component {
     
     createEntry({
       ...this.state,
-      dateCreated: this.getDate(),
-      dateModified: this.getDate(),
-      postId: uuidv4()
+      dateCreated: getDate(),
+      dateModified: getDate(),
+      id: uuidv4()
     })
     
     this.setState({
       title: '',
       body: ''
     })
-  }
-  
-  getDate = () => {
-    return `${new Date().toLocaleString('es-MX', { timeZone: 'America/Mexico_City' })}`
   }
   
   render() {
@@ -66,15 +64,13 @@ class PostsComponent extends Component {
             <div>
               Body
               <br/>
-              <textarea name='body' value={body} onChange={this.handleChange} />
+              <TextareaAutosize name='body' value={body} onChange={this.handleChange} rows={8}/>
             </div>
             <div className={classes.postsSubmit}>
               <button type='submit' name='submit'>Post</button>
             </div>
           </form>
-          <div>
-            <SinglePost/>
-          </div>
+          <SinglePost/>
       </Fragment>
     );
   }
