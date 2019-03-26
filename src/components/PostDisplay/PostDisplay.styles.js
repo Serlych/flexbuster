@@ -1,4 +1,4 @@
-const SinglePostStyles = theme => ({
+const PostDisplayStyles = theme => ({
   singlePostContainer: {
     ...theme.component.container,
     display: 'grid',
@@ -61,4 +61,4 @@ const SinglePostStyles = theme => ({
   }
 })
 
-export default SinglePostStyles;
+export default PostDisplayStyles;

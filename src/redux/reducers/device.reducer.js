@@ -1,7 +1,7 @@
 const initialState = {}
 
-const deviceReducer = (state = initialState) => {
-  return state
+const deviceReducer = (prevState = initialState) => {
+  return prevState
 }
 
 export default deviceReducer;

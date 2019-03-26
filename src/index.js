@@ -1,31 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-//Service Worker
-import * as serviceWorker from './serviceWorker';
-
-//Styles
-import { ThemeProvider as Theme } from 'react-jss';
-import LightTheme from './shared/themes/Light.theme';
-import './index.css';
-
-//Router
+import { Provider as Redux } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
+import ThemePicker from './shared/utils/ThemePicker.util';
+import configureStore from './redux/configure.store';
 import AppRoutes from './routes';
 
-//Redux
-import { Provider as Redux } from 'react-redux';
-import configureStore from './redux/configure.store';
-const store = configureStore(window.initialState);
+import './index.css';
 
+import * as serviceWorker from './serviceWorker';
+
+const store = configureStore(window.initialState);
 const root = document.getElementById('root');
+
 const ServedApp = () => (
   <Redux store={store}>
-    <Router>
-      <Theme theme={LightTheme}>
+    <ThemePicker>
+      <Router>
         <AppRoutes />
-      </Theme>
-    </Router>
+      </Router>
+    </ThemePicker>
   </Redux>
 );
 

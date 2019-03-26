@@ -1,19 +1,19 @@
 import HSLtoRGB from '../utils/hslToRgb.util';
 import { rgb } from 'wcag-contrast';
 
-const LightTheme = colorInput => {
+const DarkTheme = colorInput => {
   
-  //Hues 160
+  //Hues
   const hue = colorInput.hue;
   const hueOffset = 60;
   const successHue = 125;
   const warningHue = 55;
 
-  //Saturation 40
+  //Saturation 30
   const saturation = colorInput.saturation;
   const saturationOffset = 10;
 
-  //Lightness 55
+  //Lightness
   let lightness = colorInput.lightness;
   const lightnessOffset = 10;
 
@@ -56,9 +56,6 @@ const LightTheme = colorInput => {
   
   const dentsSize = '32px';
 
-  //Containers
-  const borderRadius = '10px';
-  
   //Automatic font color pick
   let overrideAutomaticFontColor = true;
   let overriddenFontColor = 'white';
@@ -147,7 +144,7 @@ const LightTheme = colorInput => {
         flexDirection: 'column',
         backgroundColor: grayContainer,
         padding: '2rem',
-        borderRadius: borderRadius,
+        borderRadius: '10px',
         margin: '2.5rem 0',
         boxShadow: `${shadowXPosition}px ${shadowYPosition}px ${shadowBlur}px 0px rgba(0, 0, 0, ${shadowOpacity - shadowOpacityOffset})`
       },
@@ -204,18 +201,6 @@ const LightTheme = colorInput => {
           backgroundColor: grayPrincipal,
           transition: globalTransition
         }
-      },
-      styleInput: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
-        borderRadius: borderRadius,
-        padding: '2rem',
-        '& span': {
-          marginTop: '1rem'
-        }
       }
     },
     animation: {
@@ -241,4 +226,4 @@ const LightTheme = colorInput => {
   })
 }
 
-export default LightTheme;
+export default DarkTheme;

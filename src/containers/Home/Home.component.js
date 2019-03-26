@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { object, bool } from 'prop-types';
 import injectSheet from 'react-jss';
 import { connect } from 'react-redux';
 
@@ -18,6 +19,11 @@ const HomeComponent = props => {
       </div>
     </Fragment>
   )
+}
+
+HomeComponent.propTypes = {
+  classes: object.isRequired,
+  isMobile: bool.isRequired
 }
 
 const StyledHome = injectSheet(HomeStyles)(HomeComponent);

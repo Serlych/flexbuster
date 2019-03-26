@@ -1,7 +1,6 @@
 const HeaderStyles = theme => ({
   headerContainer: {
     ...theme.layout.header,
-    userSelect: 'none',
     position: 'relative',
   },
   ...theme.animation.hoverLogo.keyframes,

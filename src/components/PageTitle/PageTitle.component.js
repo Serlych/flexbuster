@@ -1,6 +1,6 @@
 import React from 'react';
-import { string } from 'prop-types';
 import injectSheet from 'react-jss';
+import { string } from 'prop-types';
 
 import PageTitleStyles from './PageTitle.styles'
 

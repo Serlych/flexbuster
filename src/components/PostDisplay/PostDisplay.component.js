@@ -2,18 +2,24 @@ import React, { useState, Fragment } from 'react';
 import injectSheet from 'react-jss';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { object, func } from 'prop-types';
 
 import TextareaAutosize from 'react-autosize-textarea';
 
 import { editEntry, deleteEntry, updateEntry } from '../../redux/actions/posts.action';
 
-import SinglePostStyles from './SinglePost.styles';
+import PostDisplayStyles from './PostDisplay.styles';
 
-const SinglePost = props => {
+const PostDisplayComponent = props => {
 
   const { posts, classes, editEntry, deleteEntry, updateEntry } = props
   
   const [postToEdit, setPost] = useState({ title: '', body: '' })
+  
+  const handleEdit = ({title, body, id}) => {
+    setPost({ title, body })
+    editEntry(id)
+  }
   
   const handleChange = ({ target: { name, value } }) => {
     setPost({ ...postToEdit, [name]: value })
@@ -21,11 +27,6 @@ const SinglePost = props => {
   
   const handleSubmit = () => {
     updateEntry(postToEdit)
-  }
-  
-  const handleEdit = ({title, body, id}) => {
-    setPost({ title, body })
-    editEntry(id)
   }
   
   return (
@@ -68,7 +69,15 @@ const SinglePost = props => {
   )
 }
 
-const StyledSinglePost = injectSheet(SinglePostStyles)(SinglePost);
+PostDisplayComponent.propTypes = {
+  posts: object.isRequired,
+  classes: object.isRequired,
+  editEntry: func.isRequired,
+  deleteEntry: func.isRequired,
+  updateEntry: func.isRequired
+}
+
+const StyledSinglePost = injectSheet(PostDisplayStyles)(PostDisplayComponent);
 
 const mapStateToProps = state => ({ posts: state.posts });
 const mapDispatchToProps = dispatch => bindActionCreators({ editEntry, deleteEntry, updateEntry }, dispatch);

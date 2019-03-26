@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { object } from 'prop-types';
 import uuidv4 from 'uuid/v4';
 import injectSheet from 'react-jss';
 import { bindActionCreators } from 'redux';
@@ -6,7 +7,7 @@ import { connect } from 'react-redux';
 
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import TextareaAutosize from 'react-autosize-textarea';
-import SinglePost from '../../components/SinglePost/SinglePost.component';
+import SinglePost from '../../components/PostDisplay/PostDisplay.component';
 import { getDate } from '../../shared/utils/frontend.util';
 
 import { createEntry } from '../../redux/actions/posts.action';
@@ -22,6 +23,11 @@ class PostsComponent extends Component {
       title: '',
       body: '',
     }
+  }
+  
+  static propTypes = {
+    location: object.isRequired,
+    classes: object.isRequired
   }
   
   handleChange = ({ target: { name, value } }) => {

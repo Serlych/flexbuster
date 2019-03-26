@@ -19,3 +19,7 @@ a, a:link, a:hover, a:visited, a:active {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+::selection {
+  background: rgba(255, 255, 255, 0.65); /* WebKit/Blink Browsers */
+}

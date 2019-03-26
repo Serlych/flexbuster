@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { element } from 'prop-types';
+import { object } from 'prop-types';
 import injectSheet from 'react-jss';
 
 import HeaderStyles from './Header.styles';
@@ -17,14 +17,16 @@ const HeaderComponent = ({ classes }) => (
       <Link to='/posts'>
         <i className='fas fa-file-alt' />
       </Link>
-      <i className='fas fa-palette' />
+      <Link to='/styler'>
+        <i className='fas fa-palette' />
+      </Link>
       <i className='fas fa-user' />
     </div>
   </header>
 )
 
 HeaderComponent.propTypes = {
-  children: element
+  classes: object.isRequired
 }
 
 const StyledHeader = injectSheet(HeaderStyles)(HeaderComponent);
