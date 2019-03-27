@@ -57,7 +57,7 @@ class PostsComponent extends Component {
     
     return (
       <Fragment>
-        <PageTitle pageTitleText='Posts' pageTitlePath={location.pathname} />
+        <PageTitle pageTitleText='Post Editor' pageTitlePath={location.pathname} />
           <form className={classes.postsForm} onSubmit={this.handleSubmit}>
             <div className={classes.postsCreatePostTitle}>
               Create new post

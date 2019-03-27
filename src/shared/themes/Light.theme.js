@@ -1,20 +1,21 @@
 import HSLtoRGB from '../utils/hslToRgb.util';
 import { rgb } from 'wcag-contrast';
+import calculateComplementary from '../utils/calculateComplementarycolor.util';
 
-const LightTheme = colorInput => {
+const LightTheme = themeInput => {
   
   //Hues 160
-  const hue = colorInput.hue;
+  const hue = themeInput.color.hue;
   const hueOffset = 60;
   const successHue = 125;
   const warningHue = 55;
 
   //Saturation 40
-  const saturation = colorInput.saturation;
+  const saturation = themeInput.color.saturation;
   const saturationOffset = 10;
 
   //Lightness 55
-  let lightness = colorInput.lightness;
+  let lightness = themeInput.color.lightness;
   const lightnessOffset = 10;
 
   //Colors
@@ -36,14 +37,6 @@ const LightTheme = colorInput => {
   const grayAccent = `hsl(0, 0%, ${grayLightnessConst - 9}%)`;
   const grayContainer = `hsl(0, 0%, ${grayLightnessConst - 4}%)`;
 
-  //Shadow
-  const shadowXPosition = 3;
-  const shadowYPosition = 2;
-  const shadowBlur = 6;
-  const shadowOpacity = 0.4;
-  const shadowOpacityOffset = 0.2;
-  const imageShadow = `drop-shadow(${shadowXPosition}px ${shadowYPosition}px ${shadowBlur}px rgba(0, 0, 0, ${shadowOpacity}))`;
-
   //Font
   const fontSize = 1.1;
 
@@ -60,11 +53,11 @@ const LightTheme = colorInput => {
   const borderRadius = '10px';
   
   //Automatic font color pick
-  let overrideAutomaticFontColor = true;
-  let overriddenFontColor = 'white';
+  let autoFontColor = themeInput.color.autoFontColor;
+  let defaultFontColor = themeInput.color.fontColor;
   
   const calculateFontColor = (h, s, l) => {
-    if (overrideAutomaticFontColor === false) {
+    if (autoFontColor === true) {
       let whiteRatio = parseFloat(rgb(HSLtoRGB(h, s, l), [255, 255, 255]).toFixed(2))
       let blackRatio = parseFloat(rgb(HSLtoRGB(h, s, l), [0, 0, 0]).toFixed(2))
       
@@ -83,16 +76,50 @@ const LightTheme = colorInput => {
           return 'white'
         }
       } else {
-        return `hsl(${Math.abs(hue /2)}, 10%, 97%)`
+        return 'white'
       }
     }
     
-    return overriddenFontColor
+    return defaultFontColor
   }
   
-  let automaticFontColor = calculateFontColor(hue, saturation, lightness);
-  const primaryFont = overrideAutomaticFontColor ? overriddenFontColor : automaticFontColor
+  let computedFontColor = calculateFontColor(hue, saturation, lightness);
+  const primaryFont = autoFontColor ? computedFontColor : defaultFontColor;
   
+  //Shadow
+  const visibleShadows = themeInput.shadows.visible;
+  const coloredShadows = themeInput.shadows.colored;
+  
+  const shadowXPosition = 3;
+  const shadowYPosition = 3;
+  const shadowBlur = 6;
+  const shadowOpacity = 0.4;
+  
+  const calculateShadowColor = () => {
+    const complementaryColor = calculateComplementary(hue)
+    const defaultShadow = `hsla(0, 0%, 0%, ${shadowOpacity})`
+    const coloredShadowOpacity = 0.6
+    
+    if (lightness >= 50) {
+      if (primaryFont === 'black') {
+        return coloredShadows ? `hsla(${complementaryColor}, 70%, 75%, ${coloredShadowOpacity})` : defaultShadow
+      } else if (primaryFont === 'white') {
+        return coloredShadows ? `hsla(${complementaryColor}, 60%, 85%, ${coloredShadowOpacity})` : defaultShadow
+      }
+    } else if (lightness <= 40) {
+      if (primaryFont === 'black') {
+        return coloredShadows ? `hsla(${complementaryColor}, 60%, 85%, ${coloredShadowOpacity}) ` : defaultShadow
+      } else if (primaryFont === 'white') {
+        return coloredShadows ? `hsla(${complementaryColor}, 70%, 75%, ${coloredShadowOpacity})` : defaultShadow
+      }
+    } else {
+      return coloredShadows ? `hsla(${complementaryColor}, 40%, 60%, ${shadowOpacity + 0.3})` : defaultShadow
+    }
+  }
+  
+  const imageShadow = visibleShadows ? `drop-shadow(${shadowXPosition}px ${shadowYPosition}px ${shadowBlur}px ${calculateShadowColor()})` : 'none';
+  
+  // ========================= COMPUTED STYLES =========================
   return ({
     layout: {
       header: {
@@ -104,7 +131,7 @@ const LightTheme = colorInput => {
         color: primaryFont,
         backgroundColor: primaryAccent,
         padding: '1rem 1rem 1rem 2rem',
-        boxShadow: `0 ${shadowYPosition + 3}px ${shadowBlur}px 0px rgba(0, 0, 0, ${(shadowOpacity - 0.1).toFixed(2)})`,
+        boxShadow: visibleShadows ? `0 ${shadowYPosition + 3}px ${shadowBlur}px 0px ${calculateShadowColor()}` : 'none',
         userSelect: 'none'
       },
       content: {
@@ -119,7 +146,7 @@ const LightTheme = colorInput => {
         color: primaryFont,
         backgroundColor: primaryAccent,
         padding: '2rem',
-        boxShadow: `0 ${shadowYPosition - 5}px ${shadowBlur}px 0px rgba(0, 0, 0, ${(shadowOpacity - 0.1).toFixed(2)})`,
+        boxShadow: visibleShadows ? `0 ${shadowYPosition - 6}px ${shadowBlur}px 0px ${calculateShadowColor()}` : 'none',
         userSelect: 'none'
       }
     },
@@ -149,7 +176,7 @@ const LightTheme = colorInput => {
         padding: '2rem',
         borderRadius: borderRadius,
         margin: '2.5rem 0',
-        boxShadow: `${shadowXPosition}px ${shadowYPosition}px ${shadowBlur}px 0px rgba(0, 0, 0, ${shadowOpacity - shadowOpacityOffset})`
+        boxShadow: visibleShadows ? `${shadowXPosition}px ${shadowYPosition}px ${shadowBlur}px 0px ${calculateShadowColor()}` : 'none'
       },
       textBlock: {
         margin: '2rem 0'
@@ -175,6 +202,9 @@ const LightTheme = colorInput => {
         '& svg': {
           filter: imageShadow
         }
+      },
+      mutedContent: {
+        color: grayAccent
       }
     },
     inputElement: {
@@ -213,8 +243,9 @@ const LightTheme = colorInput => {
         backgroundColor: 'white',
         borderRadius: borderRadius,
         padding: '2rem',
+        margin: '1rem',
         '& span': {
-          marginTop: '1rem'
+          margin: '0.6rem 0'
         }
       }
     },
@@ -223,7 +254,7 @@ const LightTheme = colorInput => {
       hoverIcon: {
         transition: globalTransition,
         transform: `translate(${animationToX}px, ${animationToY}px)`,
-        filter: `drop-shadow(${shadowXPosition}px ${shadowYPosition}px ${shadowBlur}px rgba(0, 0, 0, ${shadowOpacity}))`,
+        filter: `drop-shadow(${shadowXPosition}px ${shadowYPosition}px ${shadowBlur}px ${calculateShadowColor()})`,
       },
       hoverLogo: {
         animation: 'logo 0.3s ease-in',

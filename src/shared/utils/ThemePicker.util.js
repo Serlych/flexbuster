@@ -9,12 +9,12 @@ import { bindActionCreators } from 'redux';
 
 const ThemePicker = props => {
   
-  const { themeIndex, colorInput, children } = props
+  const { themeIndex, themeInput, children } = props
   
   switch (themeIndex) {
     case 0: {
       return (
-        <Theme theme={LightTheme(colorInput)}>
+        <Theme theme={LightTheme(themeInput)}>
           {children}
         </Theme>
       )
@@ -22,7 +22,7 @@ const ThemePicker = props => {
     
     case 1: {
       return (
-        <Theme theme={DarkTheme(colorInput)}>
+        <Theme theme={DarkTheme(themeInput)}>
           {children}
         </Theme>
       )
@@ -30,7 +30,7 @@ const ThemePicker = props => {
     
     default: {
       return (
-        <Theme theme={LightTheme(colorInput)}>
+        <Theme theme={LightTheme(themeInput)}>
           {children}
         </Theme>
       )
@@ -40,7 +40,7 @@ const ThemePicker = props => {
 
 const mapStateToProps = state => ({
   themeIndex: state.theme.themeIndex,
-  colorInput: state.theme.color
+  themeInput: state.theme,
 });
 const mapDispatchToProps = () => bindActionCreators({});
 const ReducedThemePicker = connect(mapStateToProps, mapDispatchToProps)(ThemePicker);
